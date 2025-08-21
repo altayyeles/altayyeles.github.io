@@ -36,7 +36,7 @@ contactForm?.addEventListener('submit', (e) => {
     const email = encodeURIComponent(data.get('email') || '');
     const message = encodeURIComponent(data.get('message') || '');
     const body = `Ad Soyad: ${name}%0AEmail: ${email}%0A%0AMesaj:%0A${message}`;
-    window.location.href = `mailto:altay@example.com?subject=Portföy%20İletişim&body=${body}`;
+    window.location.href = `mailto:altay.yeles@std.yildiz.edu.tr?subject=Portföy%20İletişim&body=${body}`;
   }
 });
 
