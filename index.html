@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Altay YELES | Portföy</title>
+  <meta name="description" content="Altay YELES - Mathematical Engineering student at YTU. AI Engineering, Data Science, Front-End, Python. Kişisel portföy ve projeler." />
+  <meta name="author" content="Altay YELES" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Altay YELES | Portföy" />
+  <meta property="og:description" content="AI, Data Science, Front-End & Python projeleri." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://altayyeles.github.io" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/000000?v=4" /> <!-- İstersen GitHub avatar linkini koy -->
+
+  <!-- Favicon (opsiyonel) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+
+  <!-- Google Fonts -->
+  <link://fonts.googleapis.com
+  <link rel="preconnect" href="https://fontstps://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Schema.org (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Altay YELES",
+    "url": "https://altayyeles.github.io",
+    "sameAs": [
+      "https://github.com/altayyeles",
+      "https://www.linkedin.com/in/ALTAY-LINKEDIN-KULLANICI-ADI"
+    ],
+    "jobTitle": "Mathematical Engineering Student",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Yıldız Technical University"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header / Navbar -->
+  <header id="header" class="header">
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="logo">AY</span>
+        <span class="brand-text">Altay YELES</span>
+      </a>
+
+      <nav class="nav-links" aria-label="primary">
+        <a href="#about">Hakkımda</a>
+        <a href="#projects">Projeler</a>
+        <a href="#skills">Yetenekler</a>
+        <a href="#contact">İletişim</a>
+        <button id="themeToggle" class="btn btn-ghost" aria-label="Tema değiştir">🌓</button>
+      </nav>
+
+      <button id="mobileMenuBtn" class="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <a href="#about">Hakkımda</a>
+      <a href="#projects">Projeler</a>
+      <a href="#skills">Yetenekler</a>
+      <a href="#contact">İletişim</a>
+      <button id="themeToggleMobile" class="btn btn-ghost">🌓 Tema</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Merhaba, ben <span class="accent">Altay</span> 👋</h1>
+        <p class="lead">
+          YTÜ Matematik Mühendisliği öğrencisi. <strong>AI Engineering</strong>, <strong>Data Science</strong>, 
+          <strong>Front‑End</strong> ve <strong>Python</strong> ile ürünler geliştiriyorum.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">Projelerime Göz At</a>
+          <a href="#contact" class="btn btn-secondary">Benimle İletişime Geç</a>
+        </div>
+        <div class="hero-meta">
+          <span>📍 İstanbul</span>
+          <span>🎓 Yıldız Teknik Üniversitesi</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <!-- Profil görseli / illüstrasyon -->
+        <div class="avatar">
+          <!-- İstersen kendi fotoğrafını /images/avatar.jpg olarak koy -->
+          https://avatars.githubusercontent.com/u/000000?v=4
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container grid-2">
+      <div>
+        <h2>Hakkımda</h2>
+        <p>
+          Veri odaklı düşünmeyi seviyorum. Matematiksel modelleri gerçek problemlere uygulayıp
+          <strong>üretken yapay zeka</strong>, <strong>ML</strong> ve <strong>web</strong> teknolojileriyle
+          ölçülebilir değer üretmeye odaklanıyorum.
+        </p>
+        <p>
+          İlgi alanlarım: <em>LLM uygulamaları</em>, <em>MLOps</em>, <em>veri görselleştirme</em>,
+          <em>performanslı front‑end</em>.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">Scikit‑learn</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+          <span class="chip">Tailwind / CSS</span>
+        </div>
+
+        <div class="resume-cta">
+          <!-- CV PDF dosyanı repo'ya koyup linki güncelle -->
+          <a class="btn btn-outline" href="assets/AltayYeles_CV.pdf" target="_blank" rel="noopener">CV’mi Gör</a>
+          <a class="btn btn-ghost" href="https://github.com/altayyeles" target="_blank" rel="noopener">GitHub ProfilBaşarılar</h3>
+        <ul class="list">
+          <li>🧠 LLM tabanlı metin özetleme ve RAG denemeleri</li>
+          <li>📊 Kaggle mini projeleri (veri temizleme, EDA, tahmin)</li>
+          <li>💻 SPA front‑end demolar (React + API entegrasyonu)</li>
+        </ul>
+        <h3>Eğitim</h3>
+        <ul class="timeline">
+          <li>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <strong>Yıldız Teknik Üniversitesi</strong>
+              <div>Mathematical Engineering — <span class="muted">Son sınıf</span></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projeler</h2>
+        <p class="muted">Kısa açıklamalar, kullanılan teknolojiler ve kaynak kod bağlantıları.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Proje 1 -->
+        <article class="project-card">
+          <img src="assets/project-ml.jpg" alt="ML Projesi görseli" loading="lazy" />
+          <div class="project-content">
+            <h3>RAG + Metin Arama</h3>
+            <p>Belge tabanlı soru-cevap için vektör arama ile basit bir RAG pipeline’ı.</p>
+            <div class="tags">
+              <span>Python</span><span>FAISS</span><span>LLM</span>
+            </div>
+            <div class="actions">
+              <a class="btn btn-link" href="https://github.com/alt    <a class="btn btn-link" href="#" aria-disabled="true">Canlı Demo (yakında)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proje 2 -->
+        <article class="project-card">
+          <img src="assets/project-ds.jpg" alt="Data Science Projesi görseli" loading="lazy" />
+          <div class="project-content">
+            <h3>Satış Tahmini</h3>
+            <p>Zaman serisi + regresyon ile ürün satış tahmini ve görselleştirme.</p>
+            <div class="tags">
+              <span>Pandas</span><span>scikit‑learn</span><span>Plotly</span>
+            </div>
+            <div class="actions">
+              <a class="btn btn-link" href="https://github.com/altayyeles/PROJECT_SALES" target="_blank" rel="disabled="true">Rapor</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proje 3 -->
+        <article class="project-card">
+          <img src="assets/project-fe.jpg" alt="Front-end Projesi görseli" loading="lazy" />
+          <div class="project-content">
+            <h3>SPA Dashboard</h3>
+            <p>Performans odaklı React dashboard, API’dan gerçek zamanlı veri çekimi.</p>
+            <div class="tags">
+              <span>React</span><span>Vite</span><span>REST</span>
+            </div>
+            <div class="actions">
+              <a class="btn btn-link" href="https://github.com/altayyeles/PROJECT_DASHBOARD" target="_ef="https://your    </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Yetenekler</h2>
+        <p class="muted">Günlük kullandığım başlıca araçlar ve teknolojiler.</p>
+      </div>
+
+      <div class="skill-grid">
+        <div class="skill">
+          <div class="skill-top">
+            <span>Python</span><span class="muted">İleri</span>
+          </div>
+          <div class="meter"><span style="width: 85%"></span></div>
+        </div>
+        <div class="skill">
+          <div class="skill-top">
+            <span>Data Science</span><span class="muted">İleri</span>
+          </div>
+          <div class="meter"><span style="width: 80%"></span></div>
+        </div>
+        <div class="skill">
+          <div class="skill-top">
+            <span>Machine Learning</span><span class="muted">Orta+</span>
+          </div>
+          <div class="meter"><span style="width: 70%"></span></div>
+        </div>
+        <div class="skill">
+          <div class="skill-top">
+            <span>Front‑End (JS/React)</span><span class="muted">Orta+</span>
+          </div>
+          <div class="meter"><span style="width: 72%"></span></div>
+        </div>
+        <div class="skill">
+          <div class="skill-top">
+            <span>SQL</span><span class="muted">Orta</span>
+          </div>
+          <div class="meter"><span style="width: 65%"></span></div>
+        </div>
+        <div class="skill">
+          <div class="skill-top">
+            <span>MLOps / Git</span><span class="muted">Orta</span>
+          </div>
+          <div class="meter"><span style="width: 60%"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>İletişim</h2>
+        <p class="muted">Proje, staj veya iş fırsatları için bana yazabilirsin.</p>
+      </div>
+
+      <div class="contact-wrap">
+        <form id="contactForm" class="card contact-form" method="POST" action="https://formspree.io/f/YOUR_FORMSPREE_ID">
+          <!-- Formspree'de form ID'ni koy. Alternatif: mailto için script.js bak. -->
+          <label>
+            <span>Ad Soyad</span>
+            <input type="text" name="name" placeholder="Adın Soyadın" required />
+          </label>
+          <label>
+            <span>E‑posta</span>
+            <input type="email" name="email" placeholder="email@ornek.com" required />
+          </label>
+          <label>
+            <span>Mesaj</span>
+            <textarea name="message" rows="5" placeholder="Merhaba..." required></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Gönder</button>
+          <p class="form-note muted">Form çalışmıyorsa, e‑posta: <a href="mailto:altay@example
