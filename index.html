@@ -1,307 +1,1123 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="light">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Altay YELES | Portföy</title>
-  <meta name="description" content="Altay YELES - Mathematical Engineering student at YTU. AI Engineering, Data Science, Front-End, Python. Kişisel portföy ve projeler." />
-  <meta name="author" content="Altay YELES" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Altay YELES | Portföy" />
-  <meta property="og:description" content="AI, Data Science, Front-End & Python projeleri." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://altayyeles.github.io" />
-  <meta property="og:image" content="https://altayyeles.github.io/assets/avatar.jpg" /> <!-- İstersen GitHub avatar linkini koy -->
-
-  <!-- Favicon (opsiyonel) -->
-  <link rel="icon" href="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Schema.org (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Altay YELES",
-    "url": "https://altayyeles.github.io",
-    "sameAs": [
-      "https://github.com/altayyeles",
-      "https://www.linkedin.com/in/altayyeles"
-    ],
-    "jobTitle": "Mathematical Engineering Student",
-    "affiliation": {
-      "@type": "CollegeOrUniversity",
-      "name": "Yıldız Technical University"
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altay Yeles — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --surface: #111110;
+    --border: #2a2a26;
+    --accent: #c8f04a;
+    --accent2: #4af0b8;
+    --text: #e8e4d6;
+    --muted: #6b6860;
+    --card: #161614;
   }
-  </script>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* CURSOR */
+  body { cursor: none; }
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s, width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease-out, opacity 0.2s;
+    opacity: 0.5;
+  }
+
+  /* GRAIN */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 500;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,240,74,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.35s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-family: 'Newsreader', serif;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 600; }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.65s forwards;
+  }
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.8rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a08;
+    font-weight: 600;
+  }
+  .btn-primary:hover { background: #d8ff55; transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* Hero photo */
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s 0.8s forwards;
+  }
+  .photo-frame {
+    width: 340px; height: 420px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,240,74,0.05) 0%, transparent 60%);
+    z-index: 1;
+  }
+  .photo-frame-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1);
+    display: block;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.75rem;
+    color: var(--muted);
+  }
+  .photo-placeholder .icon {
+    font-size: 3rem; opacity: 0.3;
+  }
+  .photo-placeholder p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.5;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+  .photo-tag {
+    position: absolute; bottom: -1px; left: -1px;
+    background: var(--accent);
+    color: #0a0a08;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    z-index: 2;
+    font-weight: 600;
+  }
+  .photo-corner {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 40px; height: 40px;
+    border-top: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+    z-index: 2;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat {
+    padding: 2rem 3rem;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .exp-item.visible { opacity: 1; transform: none; }
+  .exp-meta {}
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+  .exp-company {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-bullets li {
+    font-size: 0.95rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    top: 0.1rem;
+  }
+  .exp-bullets strong { color: var(--text); font-weight: 600; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--card);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s, background 0.2s;
+  }
+  .project-card.visible { opacity: 1; transform: none; }
+  .project-card:hover { background: #1a1a17; }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover::after { transform: scaleX(1); }
+
+  /* Project screenshot placeholder */
+  .project-screenshot {
+    width: 100%;
+    height: 160px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-screenshot::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,240,74,0.03) 0%, transparent 60%);
+  }
+  .project-screenshot p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .ss-icon { font-size: 1.8rem; opacity: 0.2; position: relative; z-index: 1; }
+
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 1px;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  .project-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.8rem; }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .skill-group {
+    background: var(--card);
+    padding: 2rem;
+  }
+  .skill-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .skill-items { display: flex; flex-direction: column; gap: 0.6rem; }
+  .skill-item {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .skill-name {
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+  .skill-bar {
+    height: 2px;
+    width: 80px;
+    background: var(--border);
+    position: relative;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    position: absolute; top: 0; left: 0; height: 100%;
+    background: var(--accent);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s ease-out;
+  }
+  .skill-fill.animate { transform: scaleX(1); }
+
+  /* CERTS */
+  .certs-list { display: flex; flex-direction: column; gap: 1rem; }
+  .cert-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: border-color 0.2s;
+  }
+  .cert-item:hover { border-color: var(--accent); }
+  .cert-left { display: flex; align-items: center; gap: 1.2rem; }
+  .cert-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .cert-name {
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .cert-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .cert-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .contact-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+  .contact-heading em {
+    font-style: italic;
+    font-family: 'Newsreader', serif;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--card); }
+  .contact-link-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 60px;
+  }
+  .contact-link-text { font-size: 0.9rem; color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero-visual { display: none; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 4rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
+<body>
 
-<body id="top">
-  <!-- Header / Navbar -->
-  <header id="header" class="header">
-    <div class="container nav">
-      <a href="#" class="brand">
-        <span class="logo">AY</span>
-        <span class="brand-text">Altay YELES</span>
-      </a>
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-      <nav class="nav-links" aria-label="primary">
-        <a href="#about">Hakkımda</a>
-        <a href="#projects">Projeler</a>
-        <a href="#skills">Yetenekler</a>
-        <a href="#contact">İletişim</a>
-        <button id="themeToggle" class="btn btn-ghost" aria-label="Tema değiştir">🌓</button>
-      </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Altay<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">hakkımda</a></li>
+    <li><a href="#experience">deneyim</a></li>
+    <li><a href="#projects">projeler</a></li>
+    <li><a href="#skills">beceriler</a></li>
+    <li><a href="#contact">iletişim</a></li>
+  </ul>
+</nav>
 
-      <button id="mobileMenuBtn" class="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-content">
+    <p class="hero-label">// matematik mühendisi & yapay zeka geliştiricisi</p>
+    <h1>Altay<br><em>Yeleş</em></h1>
+    <p class="hero-desc">
+      <strong>YTÜ Matematik Mühendisliği</strong> son sınıf öğrencisi. İstatistiksel modelleme, makine öğrenmesi ve gerçek zamanlı sistemler üzerine teorik altyapı ve sahadan deneyimle değer üretiyorum.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:altay.yeles@std.yildiz.edu.tr" class="btn btn-primary">İletişime Geç</a>
+      <a href="https://github.com/altay-yeles" target="_blank" class="btn btn-ghost">GitHub →</a>
     </div>
-
-    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-      <a href="#about">Hakkımda</a>
-      <a href="#projects">Projeler</a>
-      <a href="#skills">Yetenekler</a>
-      <a href="#contact">İletişim</a>
-      <button id="themeToggleMobile" class="btn btn-ghost">🌓 Tema</button>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <h1>Merhaba, ben <span class="accent">Altay</span> 👋</h1>
-        <p class="lead">
-          YTÜ Matematik Mühendisliği öğrencisi. <strong>AI Engineering</strong>, <strong>Data Science</strong>, 
-          <strong>Front‑End</strong> ve <strong>Python</strong> ile ürünler geliştiriyorum.
-        </p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">Projelerime Göz At</a>
-          <a href="#contact" class="btn btn-secondary">Benimle İletişime Geç</a>
-        </div>
-        <div class="hero-meta">
-          <span>📍 İstanbul</span>
-          <span>🎓 Yıldız Teknik Üniversitesi</span>
-        </div>
+  </div>
+  <div class="hero-visual">
+    <div class="photo-frame">
+      <!-- 
+        📸 PROFİL FOTOĞRAFI
+        Buraya profesyonel bir vesikalık/yarım boy fotoğraf eklenmesi önerilir.
+        Tercih: Düz arka planlı, açık veya koyu ton, kurumsal ya da casual fotoğraf.
+        <img class="photo-frame-img" src="profil-fotografi.jpg" alt="Altay Yeleş">
+        şeklinde img etiketi ekleyerek kullanabilirsiniz.
+      -->
+      <div class="photo-placeholder">
+        <span class="icon">🖼</span>
+        <p>Buraya profesyonel profil fotoğrafınızı ekleyin<br>Önerilen: 340×420 px, gri ton veya renkli</p>
       </div>
-      <div class="hero-media">
-        <!-- Profil görseli / illüstrasyon -->
-        <div class="avatar">
-          <!-- İstersen kendi fotoğrafını /images/avatar.jpg olarak koy -->
-            <img src="assets/avatar.jpg" alt="Altay YELES" loading="lazy" />
-        </div>
-      </div>
+      <div class="photo-corner"></div>
+      <div class="photo-tag">Istanbul — 2025</div>
     </div>
-    <div class="hero-bg"></div>
-  </section>
+  </div>
+</section>
 
-  <!-- About -->
-  <section id="about" class="section">
-    <div class="container grid-2">
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat">
+    <div class="stat-num">3+</div>
+    <div class="stat-label">Staj Deneyimi</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">6+</div>
+    <div class="stat-label">Tamamlanan Proje</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Teknoloji Sertifikası</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">C1</div>
+    <div class="stat-label">İngilizce Seviyesi</div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Deneyim</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Oca 2026 – Şub 2026</div>
+        <div class="exp-company">LED Yazılım · YTÜ Teknopark</div>
+      </div>
       <div>
-        <h2>Hakkımda</h2>
-        <p>
-          Veri odaklı düşünmeyi seviyorum. Matematiksel modelleri gerçek problemlere uygulayıp
-          <strong>üretken yapay zeka</strong>, <strong>ML</strong> ve <strong>web</strong> teknolojileriyle
-          ölçülebilir değer üretmeye odaklanıyorum.
-        </p>
-        <p>
-          İlgi alanlarım: <em>AI</em>, <em>Data Science</em>, <em>veri görselleştirme</em>,
-          <em>performanslı front‑end</em>.
-        </p>
-
-        <div class="chips">
-          <span class="chip">Python</span>
-          <span class="chip">Pandas</span>
-          <span class="chip">Scikit‑learn</span>
-          <span class="chip">PyTorch</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">Flask</span>
-          <span class="chip">HTML / CSS</span>
-        </div>
-
-        <div class="resume-cta">
-          <!-- CV PDF dosyanı repo'ya koyup linki güncelle -->
-          <a class="btn btn-outline" href="assets/ALTAY_YELES_CV.pdf" target="_blank" rel="noopener">CV’mi Gör</a>
-          <a class="btn btn-ghost" href="https://github.com/altayyeles" target="_blank" rel="noopener">GitHub Profilim</a>
-        </div>
-        <h3>Başarılar</h3>
-        <ul class="list">
-          <li>🍔 Restaurant Ordering App – JavaScript ile ürün listeleme, sepet yönetimi ve sipariş takibi özellikleri geliştirdim.</li>
-          <li>🤖 Mentalist Chatbot – Kullanıcılarla etkileşimli sohbet edebilen JavaScript tabanlı chatbot tasarladım.</li>
-          <li>📊 Python Development Projects – Coursera müfredatına dayalı veri analizi, veri temizleme ve tahminleme uygulamaları.</li>
-        </ul>
-        <h3>Eğitim</h3>
-        <ul class="timeline">
-          <li>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <strong>Yıldız Teknik Üniversitesi</strong>
-              <div>Mathematical Engineering — <span class="muted">4.sınıf</span></div>
-            </div>
-          </li>
+        <div class="exp-role">Yazılım Geliştirme Stajyeri</div>
+        <ul class="exp-bullets">
+          <li>Üretim süreçlerinde <strong>AI destekli kalite yönetimi</strong> için ERP Kalite Modülü geliştirdim.</li>
+          <li><strong>XGBoost + SHAP</strong> ile hata olasılığı tahmini, <strong>Random Forest</strong> ile RUL tahmini modelleri kurdum.</li>
+          <li><strong>FastAPI</strong> backend + <strong>Streamlit</strong> ile gerçek zamanlı KPI Dashboard (OEE, FPY, DPMO, Cpk) tasarladım.</li>
+          <li><strong>Docker & Docker Compose</strong> konteynerizasyon ve CI/CD pipeline entegrasyonu sağladım.</li>
         </ul>
       </div>
     </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>Projeler</h2>
-        <p class="muted">Kısa açıklamalar, kullanılan teknolojiler ve kaynak kod bağlantıları.</p>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">May 2025 – Ağu 2025</div>
+        <div class="exp-company">Bluesense AI</div>
       </div>
-
-      <div class="projects-grid">
-        <!-- Proje 1 -->
-        <article class="project-card">
-          <img src="assets/project-ml.png" alt="ML Projesi görseli" loading="lazy" />
-          <div class="project-content">
-            <h3>Mentalist Chatbot</h3>
-            <p>Tarayıcı tabanlı sohbet robotu.</p>
-            <div class="tags">
-              <span>JavaScript</span><span>NLP</span><span>LLM</span>
-            </div>
-            <div class="actions">
-              <a class="btn btn-link" href="https://github.com/altayyeles/Mentalist-Chatbot" target="_blank" rel="noopener">GitHub</a>          
-            </div>
-          </div>
-        </article>
-
-        <!-- Proje 2 -->
-        <article class="project-card">
-          <img src="assets/project-ds.png" alt="Microsoft Python Development Kursu görseli" loading="lazy" />
-          <div class="project-content">
-            <h3>Microsoft Python Development Sertifikam</h3>
-            <p>Coursera'nın Microsoft Geliştirme bölümünden uygulamalı Python projeleri.</p>
-            <div class="tags">
-              <span>Python</span><span>scikit‑learn</span><span>Flask</span>
-            </div>
-            <div class="actions">
-              <a class="btn btn-link" href="https://github.com/altayyeles/Coursera-Microsoft-Python-Development-Modules" target="_blank" rel="noopener">GitHub</a> 
-            </div>
-          </div>
-        </article>
-
-        <!-- Proje 3 -->
-        <article class="project-card">
-          <img src="assets/project-fe.jpg" alt="Front-end Projesi görseli" loading="lazy" />
-          <div class="project-content">
-            <h3>Restaurant Ordering App</h3>
-            <p>React ve Vite kullanarak geliştirdiğim bir restoran sipariş uygulaması.</p>
-            <div class="tags">
-              <span>React</span><span>Vite</span><span>REST</span>
-            </div>
-            <div class="actions">
-              <a class="btn btn-link" href="https://github.com/altayyeles/Restaurant-ordering-app" target="_blank" rel="noopener">GitHub</a>            
-            </div>
-          </div>
-        </article>
+      <div>
+        <div class="exp-role">Yapay Zeka Stajyeri</div>
+        <ul class="exp-bullets">
+          <li><strong>Python, TensorFlow ve OpenCV</strong> ile görüntü işleme ve makine öğrenmesi modelleri geliştirdim.</li>
+          <li>Model doğruluğunu <strong>%15 artırdım</strong>, veri işleme süresini <strong>%20 kısalttım</strong>.</li>
+          <li><strong>Edge AI</strong> için optimize edilmiş modellerin entegrasyonuna katkı sağladım.</li>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Yetenekler</h2>
-        <p class="muted">Günlük kullandığım başlıca araçlar ve teknolojiler.</p>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Nis 2025 – May 2025</div>
+        <div class="exp-company">TNC Group Holding</div>
       </div>
+      <div>
+        <div class="exp-role">Bilgi Teknolojileri Stajyeri</div>
+        <ul class="exp-bullets">
+          <li>Excel, AutoCAD, Python ve Photoshop üzerine uygulamalı eğitimler aldım ve projelerde kullandım.</li>
+          <li>Proje yazım sürecine dahil olarak son proje teslimi gerçekleştirdim.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="skill-grid">
-        <div class="skill">
-          <div class="skill-top">
-            <span>Python</span><span class="muted">İleri</span>
-          </div>
-          <div class="meter"><span style="width: 85%"></span></div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Projeler</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-screenshot">
+        <!-- 
+          📸 PROJE EKRAN GÖRÜNTÜSÜ #1 — CoreBank Ledger Ops
+          Projenin çalışır haldeki ekran görüntüsü veya sistem mimarisi diyagramı.
+          Önerilen: Dashboard görüntüsü, graph UI veya mimari şema.
+          1200×600 px önerilen boyut.
+        -->
+        <span class="ss-icon">🏦</span>
+        <p>CoreBank arayüz ekran görüntüsü veya mimari diyagramı</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Redis</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">Docker</span>
+      </div>
+      <div class="project-title">CoreBank Ledger Ops</div>
+      <p class="project-desc">Çekirdek bankacılık ve operasyon tarafını birleştiren uçtan uca demo. Transfer başına tek master alert, normalize edilmiş fraud skoru (0–100) ve interaktif Graph UI ile hesap ilişkilerini görselleştiriyor.</p>
+      <a href="https://github.com/altay-yeles" target="_blank" class="project-link">GitHub'da görüntüle →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-screenshot">
+        <!-- 
+          📸 PROJE EKRAN GÖRÜNTÜSÜ #2 — AI ERP Quality Module
+          Streamlit dashboard ekran görüntüsü veya OEE/FPY grafik çıktısı.
+          Renkli, veri yoğun bir görsel ideal olur.
+          1200×600 px önerilen boyut.
+        -->
+        <span class="ss-icon">🏭</span>
+        <p>ERP Quality Module Streamlit dashboard ekran görüntüsü</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag">XGBoost</span>
+        <span class="tag">SHAP</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Docker</span>
+      </div>
+      <div class="project-title">AI-Powered ERP Quality Module</div>
+      <p class="project-desc">Üretimde öngörücü kalite analizi, öngörücü bakım (RUL), tedarikçi risk skorlaması ve görsel denetim modülleri. Gerçek zamanlı KPI görselleştirme ve akıllı uyarı sistemi ile donatılmış.</p>
+      <a href="https://github.com/altay-yeles" target="_blank" class="project-link">GitHub'da görüntüle →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-screenshot">
+        <!-- 
+          📸 PROJE EKRAN GÖRÜNTÜSÜ #3 — Fraud Detection
+          Canlı dashboard görüntüsü, Kafka akış şeması veya fraud alert ekranı.
+          Gerçek zamanlı veri akışını gösteren bir görsel çok iyi olur.
+          1200×600 px önerilen boyut.
+        -->
+        <span class="ss-icon">🔍</span>
+        <p>Gerçek zamanlı fraud detection dashboard ekran görüntüsü</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Apache Kafka</span>
+        <span class="tag">Random Forest</span>
+        <span class="tag">WebSockets</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Docker</span>
+      </div>
+      <div class="project-title">Gerçek Zamanlı Finansal Fraud Tespiti</div>
+      <p class="project-desc">Saniyede yüzlerce işlemi işleyen Apache Kafka tabanlı fraud detection sistemi. Kural tabanlı + Random Forest hibrit motoru, milisaniyeler içinde risk skorlaması yapıyor.</p>
+      <a href="https://github.com/altay-yeles" target="_blank" class="project-link">GitHub'da görüntüle →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-screenshot">
+        <!-- 
+          📸 PROJE EKRAN GÖRÜNTÜSÜ #4 — Altay AI Digital Twin
+          Web arayüzünden sohbet ekranı veya AI asistanınla konuşma görüntüsü.
+          Kullanıcı dostu ve etkileyici bir sohbet UI görseli ideal.
+          1200×600 px önerilen boyut.
+        -->
+        <span class="ss-icon">🤖</span>
+        <p>AI Digital Twin sohbet arayüzü ekran görüntüsü</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Gemini 2.5</span>
+        <span class="tag">Cloudflare Workers</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">JavaScript</span>
+      </div>
+      <div class="project-title">Altay AI — LLM Tabanlı Dijital İkiz</div>
+      <p class="project-desc">CV'yi interaktif mülakata dönüştüren kişisel AI asistanı. Serverless backend proxy, halüsinasyon engelleyen gelişmiş sistem talimatları ve Gemini 2.5 Flash destekli.</p>
+      <a href="https://github.com/altay-yeles" target="_blank" class="project-link">GitHub'da görüntüle →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-screenshot">
+        <!-- 
+          📸 PROJE EKRAN GÖRÜNTÜSÜ #5 — Fuzzy Risk Analysis
+          MATLAB fuzzy logic toolbox arayüzü veya Risk Öncelik Puanı grafiği.
+          Akademik ama görsel açıdan ilgi çekici bir çıktı idealdir.
+          1200×600 px önerilen boyut.
+        -->
+        <span class="ss-icon">📊</span>
+        <p>MATLAB fuzzy logic çıktısı veya risk analizi grafiği</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag">MATLAB</span>
+        <span class="tag">Fuzzy Logic</span>
+        <span class="tag">Mamdani FIS</span>
+        <span class="tag">Python</span>
+      </div>
+      <div class="project-title">İş Sağlığı Güvenliği Bulanık Risk Analizi</div>
+      <p class="project-desc">4 parametreli Bulanık Çıkarım Sistemi ile 625 kural otomatik türetme. Geleneksel yöntemlerin gözden kaçırdığı yüksek frekanslı ergonomik riskleri tespit ederek RÖP üretimi sağlandı.</p>
+      <a href="#" class="project-link">Dönem Projesi →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-screenshot">
+        <!-- 
+          📸 PROJE EKRAN GÖRÜNTÜSÜ #6 — Akademik Performans Analizi
+          Model sonuçlarını gösteren grafik, MATLAB çıktısı veya confusion matrix.
+          %85 doğruluk oranını görselleştiren bir çıktı ekleyebilirsiniz.
+          1200×600 px önerilen boyut.
+        -->
+        <span class="ss-icon">🎓</span>
+        <p>Akademik performans model çıktısı veya sonuç grafiği</p>
+      </div>
+      <div class="project-tags">
+        <span class="tag">MATLAB</span>
+        <span class="tag">Fuzzy Logic</span>
+        <span class="tag">Python</span>
+        <span class="tag">Scikit-learn</span>
+      </div>
+      <div class="project-title">AI Destekli Akademik Performans Analizi</div>
+      <p class="project-desc">2000 öğrenci verisinde Mamdani tabanlı FIS ile akademik performans tahmini. Üyelik fonksiyonu optimizasyonu ile %85 model doğruluğu elde edildi.</p>
+      <a href="#" class="project-link">Dönem Projesi →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Beceriler</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-label">// ML & Veri Bilimi</div>
+      <div class="skill-items">
+        <div class="skill-item">
+          <span class="skill-name">Python / scikit-learn</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.95"></div></div>
         </div>
-        <div class="skill">
-          <div class="skill-top">
-            <span>Data Science</span><span class="muted">İleri</span>
-          </div>
-          <div class="meter"><span style="width: 80%"></span></div>
+        <div class="skill-item">
+          <span class="skill-name">XGBoost / Random Forest</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.90"></div></div>
         </div>
-        <div class="skill">
-          <div class="skill-top">
-            <span>Machine Learning</span><span class="muted">Orta+</span>
-          </div>
-          <div class="meter"><span style="width: 70%"></span></div>
+        <div class="skill-item">
+          <span class="skill-name">TensorFlow / PyTorch</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.80"></div></div>
         </div>
-        <div class="skill">
-          <div class="skill-top">
-            <span>Front‑End (JS/React)</span><span class="muted">Orta+</span>
-          </div>
-          <div class="meter"><span style="width: 72%"></span></div>
+        <div class="skill-item">
+          <span class="skill-name">MATLAB / Fuzzy Logic</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.85"></div></div>
         </div>
-        <div class="skill">
-          <div class="skill-top">
-            <span>SQL</span><span class="muted">Orta</span>
-          </div>
-          <div class="meter"><span style="width: 65%"></span></div>
-        </div>
-        <div class="skill">
-          <div class="skill-top">
-            <span>MLOps / Git</span><span class="muted">Orta</span>
-          </div>
-          <div class="meter"><span style="width: 60%"></span></div>
+        <div class="skill-item">
+          <span class="skill-name">OpenCV / Görüntü İşleme</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.78"></div></div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>İletişim</h2>
-        <p class="muted">Proje, staj veya iş fırsatları için bana yazabilirsin.</p>
-      </div>
-
-      <div class="contact-wrap">
-        <form id="contactForm" class="card contact-form" method="POST" action="https://formspree.io/f/xdkdrvge">
-          <!-- Formspree'de form ID'ni koy. Alternatif: mailto için script.js bak. -->
-          <label>
-            <span>Ad Soyad</span>
-            <input type="text" name="name" placeholder="Adın Soyadın" required />
-          </label>
-          <label>
-            <span>E‑posta</span>
-            <input type="email" name="email" placeholder="email@ornek.com" required />
-          </label>
-          <label>
-            <span>Mesaj</span>
-            <textarea name="message" rows="5" placeholder="Merhaba..." required></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit">Gönder</button>
-          <p class="form-note muted">Form çalışmıyorsa, e‑posta: <a href="mailto:altay.yeles@std.yildiz.edu.tr">altay.yeles@std.yildiz.edu.tr</a></p>
-        </form>
+    <div class="skill-group">
+      <div class="skill-group-label">// Backend & DevOps</div>
+      <div class="skill-items">
+        <div class="skill-item">
+          <span class="skill-name">FastAPI / Flask</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.90"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Docker / Docker Compose</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.88"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Apache Kafka</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.75"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Celery / Redis</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.72"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Git / CI/CD</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.85"></div></div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-      <div class="container footer-inner">
-          <span>© <span id="year"></span> Altay YELES</span>
-          <a class="muted" href="#top">Yukarı Çık ↑</a>
+    <div class="skill-group">
+      <div class="skill-group-label">// Veritabanı & Frontend</div>
+      <div class="skill-items">
+        <div class="skill-item">
+          <span class="skill-name">PostgreSQL / SQLite</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.88"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">MS SQL Server</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.75"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Streamlit / Plotly</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.92"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Next.js / Vue.js</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.70"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">HTML5 / CSS3 / JS</span>
+          <div class="skill-bar"><div class="skill-fill" style="--w:0.80"></div></div>
+        </div>
       </div>
-  </footer>
+    </div>
+  </div>
+</section>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
+<!-- CERTS -->
+<section>
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Sertifikalar</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="certs-list">
+    <div class="cert-item">
+      <div class="cert-left">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Supervised Machine Learning: Regression & Classification</div>
+          <div class="cert-org">DeepLearning.AI × Stanford University — Coursera</div>
+        </div>
+      </div>
+      <div class="cert-year">2025</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-left">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">The AI Engineer Path</div>
+          <div class="cert-org">Scrimba</div>
+        </div>
+      </div>
+      <div class="cert-year">2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-left">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Sıfırdan İleri Seviye Python Programlama</div>
+          <div class="cert-org">BTK — Bilgi Teknolojileri ve İletişim Kurumu</div>
+        </div>
+      </div>
+      <div class="cert-year">2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">İletişim</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-heading">Birlikte bir şey<br><em>üretelim.</em></div>
+      <p style="color:var(--muted);font-size:0.95rem;max-width:380px;">Staj, proje işbirliği veya herhangi bir fırsat için aşağıdaki kanallardan ulaşabilirsiniz.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:altay.yeles@std.yildiz.edu.tr" class="contact-link">
+        <span class="contact-link-icon">E-POSTA</span>
+        <span class="contact-link-text">altay.yeles@std.yildiz.edu.tr</span>
+      </a>
+      <a href="tel:+905525954935" class="contact-link">
+        <span class="contact-link-icon">TELEFON</span>
+        <span class="contact-link-text">+90 552 595 49 35</span>
+      </a>
+      <a href="https://linkedin.com/in/altay-yeles" target="_blank" class="contact-link">
+        <span class="contact-link-icon">LINKEDIN</span>
+        <span class="contact-link-text">linkedin.com/in/altay-yeles</span>
+      </a>
+      <a href="https://github.com/altay-yeles" target="_blank" class="contact-link">
+        <span class="contact-link-icon">GITHUB</span>
+        <span class="contact-link-text">github.com/altay-yeles</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Altay Yeleş — İstanbul, Türkiye</p>
+  <p>YTÜ Matematik Mühendisliği · 2021–2026</p>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.classList.add('visible');
+          // Skill bars
+          e.target.querySelectorAll('.skill-fill').forEach(bar => {
+            bar.style.transform = `scaleX(${bar.style.getPropertyValue('--w') || parseFloat(bar.style['--w']) || 0.8})`;
+          });
+        }, e.target.dataset.delay || 0);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.exp-item, .project-card').forEach((el, i) => {
+    el.dataset.delay = i * 80;
+    observer.observe(el);
+  });
+
+  // Skill bars observer
+  const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-fill').forEach(bar => {
+          const w = bar.style.cssText.match(/--w:([\d.]+)/)?.[1] || '0.8';
+          setTimeout(() => { bar.style.transform = `scaleX(${w})`; }, 200);
+        });
+        skillObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-group').forEach(g => skillObserver.observe(g));
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 200) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
 </body>
 </html>
-
-
-

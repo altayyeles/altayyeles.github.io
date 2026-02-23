@@ -6,7 +6,7 @@ Kısa açıklama
 Özellikler
 - Hakkında (About) bölümü
 - Projeler / Portfolyo
-- Blog (isteğe bağlı)
+- Blog 
 - İletişim bilgileri / sosyal bağlantılar
 - Duyarlı (responsive) tasarım
 
